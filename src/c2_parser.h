@@ -2,6 +2,8 @@
 #include <stdbool.h>
 #include <string.h>
 
+#ifndef C2_PARSER
+#define C2_PARSER
 typedef struct 
 {
     uint8_t *buffer;
@@ -14,3 +16,4 @@ void c2_parser_init(ts_c2_parser *self, uint8_t *buffer, uint8_t size);
 bool validate_id_hex(ts_c2_parser *self);
 bool validate_crc_hex(ts_c2_parser *self);
 
+#endif

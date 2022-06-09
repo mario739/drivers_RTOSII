@@ -1,11 +1,6 @@
 #include "unity.h"
 #include "c2_parser.h"
 
-void test_leds(void)
-{
-    TEST_FAIL_MESSAGE("ARRANCAMOS");  
-}
-
 void test_id_hex(void)
 {
     ts_c2_parser buffer_validate;

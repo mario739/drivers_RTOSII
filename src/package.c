@@ -35,3 +35,38 @@ ts_erroy_type validate_data(ts_frame *self)
     
     return NO_ERROR;
 }
+
+void convert_snake_case(ts_frame *self)
+{
+    for (uint8_t i = 6; i < self->count_buffer-3; i++)
+    {
+        if (self->buffer[i] >= 'A' && self->buffer[i] <= 'Z')
+        {
+            self->buffer[i]=self->buffer[i]+32;
+        }
+        else if (self->buffer[i]==' ')
+        {
+            self->buffer[i]='_';
+        }
+    }
+}
+
+void convert_camel_case(ts_frame *self)
+{
+    uint8_t data[]={'a','a','a'};
+    uint8_t data2[]={'b','b','b'};
+    for (uint8_t i = 6; i < self->count_buffer-3; i++)
+    {
+        if (self->buffer[i]=='_')
+        {
+            self->buffer[i+1]-=32;
+            memmove((void*)self->buffer+i,(void*)self->buffer+i+1,self->count_buffer-i);
+            self->count_buffer--;
+        }
+        else if(self->buffer[i] >= 'A' && self->buffer[i] <= 'Z')
+        {
+            self->buffer[i]=self->buffer[i]+32;
+        }    
+    }
+    
+}

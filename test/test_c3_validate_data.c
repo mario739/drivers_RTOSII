@@ -9,7 +9,7 @@ void test_validate_data(void)
 {   
     ts_frame package={.count_buffer=18};
     //prueba para validar si el primer byte de datos no es '_'
-    uint8_t buffer2[]={'(','0','0','F','F','C','_','o','l','a','_','M','u','n','d','o','F','F',')'};
+    uint8_t buffer2[]={'(','0','0','F','F','C','h','o','l','a','_','M','u','n','d','o','F','F',')'};
     package.buffer=buffer2;
 
     TEST_ASSERT_EQUAL(NO_ERROR,validate_data(&package));
