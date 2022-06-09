@@ -2,6 +2,8 @@
 #include <stdbool.h>
 #include <string.h>
 
+#ifndef C2_FRAME
+#define C2_FRAME
 typedef enum
 {
     SOM,
@@ -18,3 +20,4 @@ typedef struct
 
 void frame_init(ts_frame *self,uint8_t *buffer,uint8_t max_size_buffer,uint8_t size_buffer,en_frame state_frame,uint8_t count_buffer);
 bool frame_process(ts_frame *self, uint8_t byte);
+#endif
