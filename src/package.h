@@ -36,6 +36,7 @@ ts_erroy_type validate_data(ts_frame *self);
 void convert_snake_case(ts_frame *self);
 void convert_camel_case(ts_frame *self);
 void convert_pascal_case(ts_frame *self);
+void process_package(ts_frame *self);
 #endif
 
 
