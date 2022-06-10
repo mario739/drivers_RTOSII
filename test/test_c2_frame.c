@@ -2,7 +2,6 @@
 #include "c2_frame.h"
 #include "c2_parser.h"
 
-
 void test_frame_process(void)
 {
     uint8_t buffer[]={'(','0','0','F','F','H','o','l','a','_','M','u','n','d','o','F','F',')'};
@@ -42,4 +41,13 @@ void test_convert_ascii_to_uint(void)
     uint8_t res=convert_ascii_to_uint(data);
     printf( "%u\n",res);
     TEST_ASSERT_EQUAL_UINT8(0xB4,res);
+}
+
+void test_convert_int_to_ascii(void)
+{
+    uint8_t crc=0x97;
+    uint8_t data[2]={0};
+    uint8_t data_out[2]={'9','7'};
+    convert_uint_to_ascii(data,crc);
+    TEST_ASSERT_EQUAL_UINT8_ARRAY(data_out,data,2);
 }

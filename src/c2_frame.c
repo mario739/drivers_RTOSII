@@ -78,6 +78,23 @@ uint8_t convert_ascii_to_uint(uint8_t *data)
 	return result;
 }
 
+void convert_uint_to_ascii(uint8_t *data,uint8_t crc)
+{
+    uint8_t msn, lsn;
+    msn = crc / 16;
+    lsn = crc - msn * 16;
+
+    if (msn < 10)
+        data[0] = msn + '0';
+    else
+        data[0] = msn - 10 + 'A';
+
+    if (lsn < 10)
+        data[1] = lsn + '0';
+    else
+        data[1] = lsn - 10 + 'A';
+}
+
 static uint8_t crc8_small_table[16] = {
     0x00, 0x07, 0x0e, 0x09, 0x1c, 0x1b, 0x12, 0x15,
     0x38, 0x3f, 0x36, 0x31, 0x24, 0x23, 0x2a, 0x2d

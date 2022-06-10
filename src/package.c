@@ -10,10 +10,6 @@
  */
 
 #include "package.h"
-void package_init(ts_package *package)
-{
-    package->buffer=(uint8_t*)malloc(1000);
-}
 
 ts_erroy_type validate_data(ts_frame *self)
 {

@@ -16,11 +16,6 @@
 #include <stdint.h>
 #include <stdlib.h>
 #include "c2_frame.h"
-typedef struct 
-{
-    uint8_t *buffer;
-
-}ts_package;
 
 typedef enum
 {
@@ -29,8 +24,6 @@ typedef enum
     ERROR_SYSTEM,
     NO_ERROR
 } ts_erroy_type;
-
-void package_init(ts_package *package);
 
 ts_erroy_type validate_data(ts_frame *self);
 void convert_snake_case(ts_frame *self);

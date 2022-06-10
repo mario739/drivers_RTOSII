@@ -27,4 +27,5 @@ void frame_init(ts_frame *self,uint8_t *buffer,uint8_t max_size_buffer,uint8_t s
 bool frame_process(ts_frame *self, uint8_t byte);
 uint8_t validate_crc(ts_frame *self);
 uint8_t convert_ascii_to_uint(uint8_t *data);
+void convert_uint_to_ascii(uint8_t *data,uint8_t crc);
 #endif

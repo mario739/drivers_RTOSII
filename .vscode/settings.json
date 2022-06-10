@@ -3,6 +3,7 @@
         "c2_frame.h": "c",
         "c2_parser.h": "c",
         "crc8.h": "c",
-        "inttypes.h": "c"
+        "inttypes.h": "c",
+        "string.h": "c"
     }
 }
