@@ -1,8 +1,6 @@
 #include "unity.h"
 #include "c2_frame.h"
 #include "c2_parser.h"
-#include "stdio.h"
-#include "crc8.h"
 
 
 void test_frame_process(void)
@@ -30,8 +28,18 @@ void test_frame_process(void)
 void test_validate_crc(void)
 {
     ts_frame package;
-    uint8_t data=0;
-    uint8_t buffer_int[]={'(','0','0','0','0','m','H','O','L','A','9','7',')'};
+    uint8_t buffer_int[]={'(','0','0','0','0','C' ,'H','e','l','l','o','W','o','r','l','d','9','7',')'};
+    package.count_buffer=19;
     package.buffer=buffer_int;
-    TEST_ASSERT_EQUAL_UINT8(123,validate_crc(&package));
+    uint8_t data=validate_crc(&package);
+    printf( "%u\n",data);
+    TEST_ASSERT_EQUAL_UINT8(0x97,data);
+}
+
+void test_convert_ascii_to_uint(void)
+{
+    uint8_t data[2]={'B','4'};
+    uint8_t res=convert_ascii_to_uint(data);
+    printf( "%u\n",res);
+    TEST_ASSERT_EQUAL_UINT8(0xB4,res);
 }
