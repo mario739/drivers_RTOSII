@@ -19,20 +19,32 @@
 void test_convert_snake_data(void)
 {   
     ts_frame package;
-    uint8_t buffer_int[]={'(','0','0','F','F','C','h','o','l','a',' ','m','u','n','d','o','F','F',')'};
-    uint8_t buffer_out[]={'(','0','0','F','F','C','h','o','l','a','_','m','u','n','d','o','F','F',')'};
+    uint8_t buffer_int[]={'(','0','0','F','F','S','h','o','l','a',' ','m','u','n','d','o','E','9',')'};
+    uint8_t buffer_out[]={'(','0','0','F','F','S','h','o','l','a','_','m','u','n','d','o','E','9',')'};
     package.count_buffer=19;
     package.buffer=buffer_int;
     convert_snake_case(&package);
     printf(package.buffer);
     TEST_ASSERT_EQUAL_UINT8_ARRAY(buffer_out,package.buffer,19);
 
-    uint8_t buffer_int3[]={'(','0','0','F','F','C','H','o','l','a','_','m','u','n','d','o','F','F',')'};
+    uint8_t buffer_int3[]={'(','0','0','F','F','S','H','o','l','a','_','m','u','n','d','o','E','9',')'};
     package.count_buffer=19;
     package.buffer=buffer_int3;
     convert_snake_case(&package);
     printf(package.buffer);
     TEST_ASSERT_EQUAL_UINT8_ARRAY(buffer_out,package.buffer,19);
+
+    //TEST SNAKE
+    //tstmsg = '(0000SGoodbye89)'
+    //expmsg = '(0000Sgoodbye28)'
+
+    /*uint8_t buffer_int2[]={'(','0','0','F','F','S','G','o','o','d','b','y','e','8','9',')'};
+    uint8_t buffer_out2[]={'(','0','0','F','F','S','g','o','o','d','b','y','e','8','9',')'};
+    package.count_buffer=16;
+    package.buffer=buffer_int2;
+    convert_snake_case(&package);
+    printf(package.buffer);
+    TEST_ASSERT_EQUAL_UINT8_ARRAY(buffer_out2,package.buffer,16);*/
 }
 
 void test_convert_camel_case(void)
@@ -45,6 +57,17 @@ void test_convert_camel_case(void)
     convert_camel_case(&package); 
     printf(package.buffer);
     TEST_ASSERT_EQUAL_UINT8_ARRAY(buffer_out,package.buffer,18);
+    package.buffer=NULL;
+    //TEST CAMEL 
+    //tstmsg = '(0000CHelloE9)'
+    //expmsg = '(0000Chello8D)'
+    /*uint8_t buffer_int2[]={'(','0','0','F','F','C','H','e','l','l','o','E','9',')'};
+    uint8_t buffer_out2[]={'(','0','0','F','F','C','h','e','l','l','o','E','9',')'};
+    package.count_buffer=14;
+    package.buffer=buffer_int2;
+    convert_camel_case(&package); 
+    printf(package.buffer);
+    TEST_ASSERT_EQUAL_UINT8_ARRAY(buffer_out2,package.buffer,14);*/
 }
 
 

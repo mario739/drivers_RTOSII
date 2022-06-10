@@ -2,7 +2,7 @@
 #include "c2_frame.h"
 #include "c2_parser.h"
 #include "stdio.h"
-
+#include "crc8.h"
 
 
 void test_frame_process(void)
@@ -25,4 +25,13 @@ void test_frame_process(void)
     }
     printf((const char*)frame.buffer);
     TEST_ASSERT_EQUAL_UINT8_ARRAY_MESSAGE(buffer,frame.buffer,18,"no son iguales");    
+}
+
+void test_validate_crc(void)
+{
+    ts_frame package;
+    uint8_t data=0;
+    uint8_t buffer_int[]={'(','0','0','0','0','m','H','O','L','A','9','7',')'};
+    package.buffer=buffer_int;
+    TEST_ASSERT_EQUAL_UINT8(123,validate_crc(&package));
 }

@@ -1,5 +1,4 @@
 #include "c2_frame.h"
-#include "c2_parser.h"
 
 void frame_init(ts_frame *self, uint8_t *buffer, uint8_t max_size_buffer, uint8_t size_buffer, en_frame state_frame, uint8_t count_buffer)
 {
@@ -53,4 +52,10 @@ bool frame_process(ts_frame *self, uint8_t byte)
     default:
         break;
     }
+}
+
+uint8_t validate_crc(ts_frame *self)
+{
+    //crc8_calc(0,self->buffer,5);
+    return 1;
 }
