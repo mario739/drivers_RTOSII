@@ -108,6 +108,20 @@ void test_procees_to_camel(void)
     process_package(&package);
     printf(package.buffer);
     TEST_ASSERT_EQUAL_UINT8_ARRAY(buffer_out2,package.buffer,18);
+}
 
+void test_process_to_pascal(void)
+{
 
+    //TEST CAMEL-PASCAL
+    //tstmsg = '(0000PfooBarBazF2)'
+    //expmsg = '(0000PFooBarBazFF)'
+    ts_frame package;
+    uint8_t buffer_int[]={'(','0','0','0','0','P','f','o','o','B','a','r','B','a','z','F','2',')'};
+    uint8_t buffer_out[]={'(','0','0','0','0','P','F','o','o','B','a','r','B','a','z','F','2',')'};
+    package.count_buffer=18;
+    package.buffer=buffer_int;
+    process_package(&package);
+    printf(package.buffer);
+    TEST_ASSERT_EQUAL_UINT8_ARRAY(buffer_out,package.buffer,18);
 }

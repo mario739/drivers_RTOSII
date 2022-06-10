@@ -97,11 +97,9 @@ void convert_pascal_case(ts_frame *self)
                 self->buffer[i+1]=self->buffer[i+1]-32;
             }           
             memmove((void*)self->buffer+i,(void*)self->buffer+i+1,self->count_buffer-i);
+            self->count_buffer--;
         }
-        else if (self->buffer[i] >= 'A' && self->buffer[i] <= 'Z')
-        {
-            self->buffer[i]=self->buffer[i]+32;
-        }        
+    
     }
 }
 
