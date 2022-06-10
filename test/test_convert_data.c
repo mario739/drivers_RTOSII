@@ -85,7 +85,7 @@ void test_process_package_to_snake(void)
     TEST_ASSERT_EQUAL_UINT8_ARRAY(buffer_out2,package.buffer,20);
 }
 
-void test_procees_to_pascal(void)
+void test_procees_to_camel(void)
 {
     //TEST PASCAL-CAMEL
     //tstmsg = '(0000CHelloWorld97)'
@@ -98,8 +98,16 @@ void test_procees_to_pascal(void)
     process_package(&package);
     printf(package.buffer);
     TEST_ASSERT_EQUAL_UINT8_ARRAY(buffer_out,package.buffer,19);
-    //TEST PASCAL-CAMEL
-    //tstmsg = '(0000CHelloWorld97)'
+    //TEST SNAKE-CAMEL
+    //tstmsg = '(0000Chello_worldE5)'
     //expmsg = '(0000ChelloWorldB4)'
+    uint8_t buffer_int2[]={'(','0','0','0','0','C','h','e','l','l','o','_','w','o','r','l','d','9','7',')'};
+    uint8_t buffer_out2[]={'(','0','0','0','0','C','h','e','l','l','o','W','o','r','l','d','9','7',')'};
+    package.count_buffer=19;
+    package.buffer=buffer_int2;
+    process_package(&package);
+    printf(package.buffer);
+    TEST_ASSERT_EQUAL_UINT8_ARRAY(buffer_out2,package.buffer,18);
+
 
 }
